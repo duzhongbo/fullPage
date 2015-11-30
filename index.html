@@ -84,6 +84,12 @@ box.click();
 // 浏览器可视区的高度
 var clientHeight = document.documentElement.clientHeight;
 box.style.height=clientHeight+'px';
+// 滚轮事件（chrome下，未考虑兼容问题）
+window.onmousewheel=function(e){
+    if(e.wheelDelta<0){// 小于0向下
+        box.click();
+    }
+}
 </script>
 
 
