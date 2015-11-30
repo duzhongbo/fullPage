@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>html5</title>
+</head>
+<body>
+	
+<style>
+@-webkit-keyframes slide-in-right {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slide-out-left {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(-100%); }
+}
+.out, .in {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 350ms;
+}
+.out {
+    -webkit-transform: translateX(-100%);
+    -webkit-animation-name: slide-out-left;
+}
+.in {
+    -webkit-transform: translateX(0);
+    -webkit-animation-name: slide-in-right;
+}
+.box{width:500px;height:370px;position:relative;overflow:hidden;border:3px solid #666;}
+a{position:absolute;}
+a{width:500px;height:370px;font-size:100px;text-align:center;font-weight:bold;}
+</style>
+
+<div id="box" class="box">
+    <a href="/" class="in" style="background-color:#ccc">1</a>
+    <a href="/" class="out" style="background-color:#999">2</a>
+    <a href="/" class="out" style="background-color:#666">3</a>
+    <a href="/" class="out" style="background-color:#333">4</a>
+</div>
+<a href="javascript:;" title="" id="bt">翻页</a></p>
+
+<script type="text/javascript">
+var a=box.getElementsByTagName('a');
+var num=-1;
+function nextCard(m){
+    for(var i=0;i<4;i++){
+        a[i].className='out';
+    }
+    a[m].className='in';
+}
+bt.onclick=box.onclick=function(){
+    num++;
+    if(num>=4){
+        num=0;
+    }
+    nextCard(num);
+    return false;
+}
+box.click();
+</script>
+
+
+</body>
+</html>
