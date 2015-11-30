@@ -8,6 +8,7 @@
 	
 <style>
 body{margin:0;padding:0;}
+/* 水平满屏滚动 */
 @-webkit-keyframes slide-in-right {
     from { -webkit-transform: translateX(100%); }
     to { -webkit-transform: translateX(0); }
@@ -28,6 +29,28 @@ body{margin:0;padding:0;}
     -webkit-transform: translateX(0);
     -webkit-animation-name: slide-in-right;
 }
+/* 垂直满屏滚动 */
+@-webkit-keyframes slide-in-bottom {
+    from { -webkit-transform: translateY(100%); }
+    to { -webkit-transform: translateY(0); }
+}
+@-webkit-keyframes slide-out-top {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-100%); }
+}
+.out2, .in2 {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 350ms;
+}
+.out2 {
+    -webkit-transform: translateX(-100%);
+    -webkit-animation-name: slide-out-top;
+}
+.in2 {
+    -webkit-transform: translateX(0);
+    -webkit-animation-name: slide-in-bottom;
+}
+/**/
 .box{height:370px;position:relative;overflow:hidden;}
 a{position:absolute;}
 a{width:100%;height:100%; font-size:100px;text-align:center;font-weight:bold;}
@@ -45,9 +68,9 @@ var a=box.getElementsByTagName('a');
 var num=-1;
 function nextCard(m){
     for(var i=0;i<4;i++){
-        a[i].className='out';
+        a[i].className='out2';
     }
-    a[m].className='in';
+    a[m].className='in2';
 }
 box.onclick=function(){
     num++;
