@@ -71,6 +71,9 @@ function nextCard(m){
         a[i].className='out2';
     }
     a[m].className='in2';
+    a[m].addEventListener('webkitAnimationEnd',function(){
+        state=true;        
+    },false);
 }
 box.onclick=function(){
     num++;
@@ -85,8 +88,10 @@ box.click();
 var clientHeight = document.documentElement.clientHeight;
 box.style.height=clientHeight+'px';
 // 滚轮事件（chrome下，未考虑兼容问题）
+var state=true;
 window.onmousewheel=function(e){
-    if(e.wheelDelta<0){// 小于0向下
+    if(e.wheelDelta<0&&state){// 小于0向下
+        state=false;
         box.click();
     }
 }
