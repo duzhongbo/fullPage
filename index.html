@@ -7,6 +7,7 @@
 <body>
 	
 <style>
+body{margin:0;padding:0;}
 @-webkit-keyframes slide-in-right {
     from { -webkit-transform: translateX(100%); }
     to { -webkit-transform: translateX(0); }
@@ -27,9 +28,9 @@
     -webkit-transform: translateX(0);
     -webkit-animation-name: slide-in-right;
 }
-.box{width:500px;height:370px;position:relative;overflow:hidden;border:3px solid #666;}
+.box{height:370px;position:relative;overflow:hidden;}
 a{position:absolute;}
-a{width:500px;height:370px;font-size:100px;text-align:center;font-weight:bold;}
+a{width:100%;height:100%; font-size:100px;text-align:center;font-weight:bold;}
 </style>
 
 <div id="box" class="box">
@@ -38,7 +39,6 @@ a{width:500px;height:370px;font-size:100px;text-align:center;font-weight:bold;}
     <a href="/" class="out" style="background-color:#666">3</a>
     <a href="/" class="out" style="background-color:#333">4</a>
 </div>
-<a href="javascript:;" title="" id="bt">翻页</a></p>
 
 <script type="text/javascript">
 var a=box.getElementsByTagName('a');
@@ -49,7 +49,7 @@ function nextCard(m){
     }
     a[m].className='in';
 }
-bt.onclick=box.onclick=function(){
+box.onclick=function(){
     num++;
     if(num>=4){
         num=0;
@@ -58,6 +58,9 @@ bt.onclick=box.onclick=function(){
     return false;
 }
 box.click();
+// 浏览器可视区的高度
+var clientHeight = document.documentElement.clientHeight;
+box.style.height=clientHeight+'px';
 </script>
 
 
